@@ -4,6 +4,13 @@
     <h1>My Cart</h1>
   </header>
 
+  <% if cart.empty? %>
+    <% puts 'empty' %>
+    <div class="alert">
+      <h2>Cart is empty!</h2>
+    </div>
+  <% else %>
+
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -48,5 +55,7 @@
       <% end %>
     </div>
   </div>
+
+  <% end %>
 
 </section>
