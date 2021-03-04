@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
 puts "Seeding Data ..."
 
 # Helper functions
@@ -25,9 +24,9 @@ end
 
 puts "Finding or Creating Categories ..."
 
-cat1 = Category.find_or_create_by! name: 'Apparel'
-cat2 = Category.find_or_create_by! name: 'Electronics'
-cat3 = Category.find_or_create_by! name: 'Furniture'
+cat1 = Category.find_or_create_by!({name: 'Apparel', description:  Faker::Hipster.paragraph(10)})
+cat2 = Category.find_or_create_by!({name: 'Electronics', description: Faker::Hipster.paragraph(10)})
+cat3 = Category.find_or_create_by!({name: 'Furniture', description: Faker::Hipster.paragraph(10)})
 
 ## PRODUCTS
 
