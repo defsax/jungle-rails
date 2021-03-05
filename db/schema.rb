@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210304200451) do
+ActiveRecord::Schema.define(version: 20210305010849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 20210304200451) do
 
   create_table "maps", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "title",           limit: 255,                                 null: false
-    t.string   "city",            limit: 255,                                 null: false
-    t.datetime "last_updated_at",             default: '2021-03-04 20:08:22'
-    t.boolean  "ispublic",                    default: false,                 null: false
+    t.string   "title",           limit: 255,                   null: false
+    t.string   "city",            limit: 255,                   null: false
+    t.datetime "last_updated_at",             default: "now()"
+    t.boolean  "ispublic",                    default: false,   null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -82,17 +82,15 @@ ActiveRecord::Schema.define(version: 20210304200451) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string "username", limit: 255, null: false
-    t.string "email",    limit: 255, null: false
-    t.string "password", limit: 255, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
   end
 
   add_foreign_key "favourites", "maps", name: "favourites_map_id_fkey", on_delete: :cascade
-  add_foreign_key "favourites", "users", name: "favourites_user_id_fkey", on_delete: :cascade
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
   add_foreign_key "locations", "maps", name: "locations_map_id_fkey", on_delete: :cascade
-  add_foreign_key "locations", "users", name: "locations_user_id_fkey", on_delete: :cascade
-  add_foreign_key "maps", "users", name: "maps_user_id_fkey", on_delete: :cascade
   add_foreign_key "products", "categories"
 end
