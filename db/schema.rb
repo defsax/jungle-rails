@@ -23,11 +23,6 @@ ActiveRecord::Schema.define(version: 20210305195834) do
     t.text     "description"
   end
 
-  create_table "favourites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "map_id"
-  end
-
   create_table "line_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
@@ -40,25 +35,6 @@ ActiveRecord::Schema.define(version: 20210305195834) do
 
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
-
-  create_table "locations", force: :cascade do |t|
-    t.string  "name",        limit: 255,                                                                                                                                                                 null: false
-    t.integer "map_id"
-    t.decimal "lat",                                                                                                                                                                                     null: false
-    t.decimal "long",                                                                                                                                                                                    null: false
-    t.integer "user_id"
-    t.string  "picture_url", limit: 255, default: "https://thumbnail.imgbin.com/0/9/7/imgbin-south-america-canada-organization-of-american-states-continent-map-canada-6PGHgTE8gvVsvPLhK5tpXfn2f_t.jpg", null: false
-    t.text    "description"
-    t.string  "website",     limit: 255, default: "N/A"
-  end
-
-  create_table "maps", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "title",           limit: 255,                                 null: false
-    t.string   "city",            limit: 255,                                 null: false
-    t.datetime "last_updated_at",             default: '2021-03-05 01:41:02'
-    t.boolean  "ispublic",                    default: false,                 null: false
-  end
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total_cents"
@@ -97,9 +73,7 @@ ActiveRecord::Schema.define(version: 20210305195834) do
     t.string "password_digest"
   end
 
-  add_foreign_key "favourites", "maps", name: "favourites_map_id_fkey", on_delete: :cascade
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
-  add_foreign_key "locations", "maps", name: "locations_map_id_fkey", on_delete: :cascade
   add_foreign_key "products", "categories"
 end
