@@ -17,7 +17,7 @@ RSpec.feature "User can click a product and go to product detail page", type: :f
     end
   end
 
-  scenario "They are taken to product page" do
+  xscenario "They are taken to product page" do
     #ACT
     visit root_path
     first('.product').click_link('Details')

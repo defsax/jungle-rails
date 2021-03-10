@@ -20,13 +20,14 @@ RSpec.feature "Visitor can add to cart", type: :feature, js: true do
   scenario "Cart will increment by one" do
     #ACT
     visit root_path
-    first(.product).click_button('Add')
+    puts page.body
+    first('.product').click_button('Add')
 
     #DEBUG / VERIFY
-    sleep(1)
-    save_screenshot('add_to_test.png')
+    sleep(5)
+    save_screenshot('add_to_cart.png')
 
     #VERIFY
-    #expect(page).to have_css 'article.product', count: 10
+    expect(page).to have_text 'My Cart (1)'
   end
 end
