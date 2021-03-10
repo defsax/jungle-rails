@@ -4,7 +4,8 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Screenshots
 
-![""]()
+!["Product home page"](https://raw.githubusercontent.com/defsax/jungle-rails/master/docs/product_page.png)
+!["Admin product page"](https://raw.githubusercontent.com/defsax/jungle-rails/master/docs/admin-product.png)
 
 ## Setup
 
