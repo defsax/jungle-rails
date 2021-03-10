@@ -17,7 +17,7 @@ RSpec.feature "Visitor can add to cart", type: :feature, js: true do
     end
   end
 
-  scenario "Cart will increment by one" do
+  xscenario "Cart will increment by one" do
     #ACT
     visit root_path
     puts page.body
